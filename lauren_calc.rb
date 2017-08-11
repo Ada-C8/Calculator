@@ -21,7 +21,7 @@ num1 = gets.chomp
 num2 = gets.chomp
 
 while number_check(num1) == nil || number_check(num2) == nil
-   puts "Please enter a valid number: "
+  puts "Please enter a valid number: "
   num1 = gets.chomp
   num2 = gets.chomp
 end
