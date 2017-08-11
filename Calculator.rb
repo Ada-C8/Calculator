@@ -2,10 +2,11 @@ supported_ope = ["add", "+", "subtract", "-", "multiply", "*", "divide", "/",
   "power of", "^", "modulo", "%"]
 
 $users_numbers = []
-
+$ope = ""
 def ask_number_input(fun_input)
   auth_char = ["1","2","3","4","5","6","7","8","9","0",".","-"]
   ask_number = "yes"
+
 
   while ask_number == "yes"
     puts "\nGive me a number:"
@@ -31,6 +32,10 @@ def ask_number_input(fun_input)
       end
       if forbiden_char_found == "yes"
         puts "\nYou can only enter numbers."
+      elsif $ope == "%"  && $users_numbers.length == 1 && num == "0"
+        puts "\nOops, can't divide by 0."
+      elsif $ope == "/"  && $users_numbers.length == 1 && num == "0"
+        puts "\nOops, can't divide by 0."
       elsif dot_count > 1 || num[0] == "."
         puts "\nThis is not a valid number."
       elsif dash_count > 1 || (num[1...num.length].include? "-")
@@ -88,9 +93,7 @@ def calculator(a, b, c)
       puts "\nCan't divide hotdogs by numbers."
     elsif b != "hotdog" && c == "elephant"
       puts "\nCan't divide numbers by elephants."
-    elsif c.to_i == 0
-      puts "\nOops, can't divide by 0!"
-    elsif b < c
+    elsif b < c && b != 0
       float_b = b.to_f
       float_c = c.to_f
       puts "\n#{b} / #{c} = #{'%.2f' % (float_b/float_c)}"
@@ -125,15 +128,14 @@ end
 puts "Welcome to super-awesome-calculator"
 
 puts "\nWhat operation do you want to perform?"
-puts "Here are the possible operations: "
-ope = gets.chomp.to_s.downcase
+puts "\nHere are the possible operations: add, subtract, multiply, divide, modulo, power of."
+$ope = gets.chomp.to_s.downcase
 
-until supported_ope.include? ope
-  puts "\nThis operation is not supported. Choose a different operation: add,
-  subtract, multiply, divide, modulo, power of."
-  ope = gets.chomp.to_s.downcase
+until supported_ope.include? $ope
+  puts "\nThis operation is not supported. Choose a different operation."
+  $ope = gets.chomp.to_s.downcase
 end
 
 ask_number_input("hotdog")
 ask_number_input("elephant")
-calculator(ope, $users_numbers[0], $users_numbers[1])
+calculator($ope, $users_numbers[0], $users_numbers[1])
