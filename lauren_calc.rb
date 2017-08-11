@@ -51,14 +51,24 @@ num2 = num2.to_f
 # defining a method and executing the maths
 def math(op, num1, num2)
   if op == "add" || op == "+"
+    answer = num1 + num2
+    puts "#{num1} + #{num2} = #{answer}"
     return num1 + num2
   elsif op == "subtract" || op == "-"
+    answer = num1 - num2
+    puts "#{num1} - #{num2} = #{answer}"
     return num1 - num2
   elsif op == "multiply" || op == "*"
+    answer = num1 * num2
+    puts "#{num1} * #{num2} = #{answer}"
     return num1 * num2
   elsif op == "modulo" || op == "%"
+    answer = num1 % num2
+    puts "#{num1} % #{num2} = #{answer}"
     return num1 % num2
   elsif op == "exponent" || op == "^"
+    answer = num1 ** num2
+    puts "#{num1} ^ #{num2} = #{answer}"
     return num1 ** num2
   elsif op == "divide" || op == "/"
     # how to handle if trying to divide by zero
@@ -66,26 +76,13 @@ def math(op, num1, num2)
       puts "Your answer is undefined"
       return
     end
+    answer = num1 / num2
+    puts "#{num1} / #{num2} = #{answer}"
     return num1 / num2
   else
     puts "Please enter an available operation"
   end
 end
 
-
 math = math(op, num1, num2)
 puts "Answer: #{math}"
-
-if op == "add" || op == "+"
-  puts "#{num1} + #{num2} = #{math}"
-elsif op == "subtract" || op == "-"
-  puts "#{num1} - #{num2} = #{math}"
-elsif op == "divide" || op == "/"
-  puts "#{num1} / #{num2} = #{math}"
-elsif op == "multiply" || op == "*"
-  puts "#{num1} * #{num2} = #{math}"
-elsif op == "exponent" || op == "^"
-  puts "#{num1} ^ #{num2} = #{math}"
-else op == "modulo" || op == "%"
-  puts "#{num1} % #{num2} = #{math}"
-end
