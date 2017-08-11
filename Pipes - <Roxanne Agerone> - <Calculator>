@@ -1,0 +1,83 @@
+# adds with  add and +
+# subtracts with subtract and -
+# adds with multiply and *
+ # adds numbers with divide and /
+ # handles divide when attempting to divide by 0
+ # handles erroneous input
+
+ def number_question
+   numbers = []
+   puts "give me two numbers"
+       num = gets.chomp.to_f
+       numbers.push(num)
+       num = gets.chomp.to_f
+       numbers.push(num)
+end
+
+ def add(a,b)
+   a + b
+ end
+
+ def subtract(a, b)
+   a - b
+ end
+
+def multiply(a, b)
+  a * b
+end
+
+def divide(a, b)
+  if b == 0
+    puts "Dividing by zero is tricky!  We will discuss this when we do calculus.
+    Right now, let's just call it undefined."
+  else
+  a / b
+  end
+end
+
+def doing_maths
+  puts "What kind of mathematical operation would you like to perform?"
+
+  operation = gets.chomp
+  # Here I have to find out what mathematical operation I'm going to do
+  # Yippie!  I found this thing called regex
+  if (operation =~ /add|\+/) != nil
+    puts "We're adding."
+    numbers = number_question
+    operation = add(numbers[0], numbers[1])
+  elsif (operation =~ /sub|-/) != nil
+    puts "We're subtracting."
+    numbers = number_question
+    operation = subtract(numbers[0], numbers[1])
+
+  elsif (operation =~ /mul|\*/) != nil
+    puts "We're multiplying."
+    numbers = number_question
+    operation = multiply(numbers[0], numbers[1])
+
+  elsif (operation =~ /div|\//) != nil
+    puts "We're dividing"
+    numbers = number_question
+    operation = divide(numbers[0], numbers[1])
+
+  else
+    puts "I don't quite know what you're trying to do."
+  end
+end
+
+
+puts "Let's do some math."
+do_math = ""
+
+answer = 0
+until do_math == "no"
+
+  this_one = doing_maths
+  answer += this_one
+  puts "#{this_one}"
+  puts "Would you like to do more math?"
+  do_math = gets.chomp.downcase
+end
+
+
+puts "The sum of all answers is #{answer}"
