@@ -1,21 +1,13 @@
 ### CALCULATOR EXERCISE
 
 ## DEFINE VARIABLES
-addition = ["addition", "add", "+", "plus", "and", "ajoute"]
-subtraction = ["subtract", "subtraction", "-", "minus", "less", "moins"]
-multiplication = ["multiply", "multiplication", "times", "*", "fois"]
-division = ["divide", "division", "/", "divided by", "per", "over", "divise"]
-powerof = ["square", "power", "^", "power of" "to the power of", "squared", "carre", "to the"]
-modulus = ["modulus", "modulo", "remainder", "remainder of", "rem", "%", "mod"]
-
-operators = addition + subtraction + multiplication + division + powerof + modulus
-symbols = {
-  "+" => addition,
-  "-" => subtraction,
-  "*" => multiplication,
-  "/" => division,
-  "^" => powerof,
-  "%" => modulus
+operators = {
+  "+" => ["addition", "add", "+", "plus", "and", "ajoute"],
+  "-" => ["subtract", "subtraction", "-", "minus", "less", "moins"],
+  "*" => ["multiply", "multiplication", "times", "*", "fois"],
+  "/" => ["divide", "division", "/", "divided by", "per", "over", "divise"],
+  "^" => ["square", "power", "^", "power of", "to the power of", "squared", "carre", "to the"],
+  "%" => ["modulus", "modulo", "remainder", "remainder of", "rem", "%", "mod"]
 }
 
 $op_display = "- add (+)
@@ -44,25 +36,6 @@ def check_ops(input, reqs) # where input is what we are testing & reqs is an arr
   return input
 end
 
-# Checking for negatives
-def check_neg(input)
-  if input.strip[0].include? ("-")
-    return input.strip[1..-1]
-  else
-    return input.strip
-  end
-end
-
-
-# Checking for integer versus float, only works after #check_vals validation
-def is_float(input)
-  if check_neg(input).include?(".")
-    return true
-  else
-    return false
-  end
-end
-
 # Checking for numbers
 def check_vals(input)
   until !check_neg(input).gsub(".","").match?(/\D/) && input.strip.match?(/\d/) # [] Fix: Known issue- substitution allows for entries such as 3.0.5 to pass
@@ -87,7 +60,7 @@ def calculate(op,a,b)
   when "^"
     return a ** b
   when "%"
-    return a % b # may create terrible float if b is float
+    return a % b
   end
 end
 
@@ -98,42 +71,42 @@ puts "Welcome to a simple calculator? You can use the following operators:\n#{$o
 
 
 print "Please enter your first value: "
-user_val1 = check_vals(gets.chomp)
+val1 = check_vals(gets.chomp)
 
 print "Choose your operator: "
 # user_op = gets.chomp
-user_op = check_ops(gets.chomp, operators)
+user_op = check_ops(gets.chomp, operators.values.flatten)
 disp_op = user_op # could be set to "", but just to be safe
 
 # Convert user_op to symbol
-symbols.each do |key, value|
-  if value.include? user_op
-    disp_op = key
-    user_op = value # may not be necessary
-  end
+operators.each do |key, value|
+    disp_op = key if value.include? user_op
 end
 
 print "Please select your second value: "
-user_val2 = check_vals(gets.chomp)
+val2 = check_vals(gets.chomp)
 
 # Check to see if they're trying to divide by zero
-while (disp_op == "/" || disp_op == "%") && user_val2.to_f == 0
+while (disp_op == "/" || disp_op == "%") && val2.to_f == 0
   print "You cannot divide by zero. Select another value to divide by: "
-  user_val2 = check_vals(gets.chomp)
+  val2 = check_vals(gets.chomp)
 end
 
 # Display equation
 if disp_op == "^" # Check if operator is ^ for formatting
-  puts "This is your equation: #{user_val1.strip}#{disp_op}#{user_val2.strip}"
+  puts "This is your equation: #{val1.strip}#{disp_op}#{val2.strip}"
 else
-  puts "This is your equation: #{user_val1.strip} #{disp_op} #{user_val2.strip}"
+  puts "This is your equation: #{val1.strip} #{disp_op} #{val2.strip}"
 end
 
 # Display results
-if is_float(user_val1) || is_float(user_val2) # Check for float or integer
-  puts "The result is: #{calculate(disp_op, user_val1.to_f, user_val2.to_f)}"
+return_float = calculate(disp_op, val1.to_f, val2.to_f)
+return_integer = calculate(disp_op, val1.to_i, val2.to_i)
+
+unless return_integer == return_float
+  puts "#{return_float}\n"
 else
-  puts "The result is: #{calculate(disp_op, user_val1.to_i, user_val2.to_i)}"
+  puts "#{return_integer}\n"
 end
 
 
