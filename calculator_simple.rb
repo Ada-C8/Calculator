@@ -1,3 +1,7 @@
+# Builds a calculator command line interface (CLI) that allows a user to perform simple arithmetic.
+# basic requirements
+# for ada 01 ruby
+
 error = "This input is invalid, please try again"
 operator = ["add", "+", "subtract", "-", "multiply", "*", "divide", "/"]
 
