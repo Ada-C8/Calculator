@@ -1,6 +1,6 @@
 #SIMPLE CALCULATOR METHODS--------------------------------------------------
 
-#is_numeric method (Invoked in the introduction method; it excludes + - * / but, to work it requires gets.chomp with no .to_f method)
+#is_numeric method (UsesREGEX expression; Invoked in the introduction method; it excludes + - * / but, to work it requires gets.chomp with no .to_f method)
 def is_numeric?(obj)
    obj.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) != nil ? true : false
 end
@@ -19,9 +19,9 @@ def introduction
     puts "  " + element
   end
 
- puts "\n CALCULATOR INSTRUCTIONS: \n First, you'll be prompted to enter your first number.
- Second, you'll enter which operator you would like to use from the list above.
- Third, you'll enter your second number. \n Afterwards your calculation result will print. Let's begin!"
+  puts "\n CALCULATOR INSTRUCTIONS: \n First, you'll be prompted to enter your first number."
+  puts " Second, you'll enter which operator you would like to use from the list above."
+  puts " Third, you'll enter your second number. \n Afterwards your calculation result will print. Let's begin!"
 
 end
 
