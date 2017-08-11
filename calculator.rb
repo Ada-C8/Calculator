@@ -18,9 +18,9 @@ end
 
 def calculate (user_input, num1, num2)
   puts "Please enter first number: "
-  num1 = Integer(gets.chomp)
+  num1 = Float(gets.chomp)
   puts "Please enter second number: "
-  num2 = Integer(gets.chomp.to_i)
+  num2 = Float(gets.chomp.to_i)
   if user_input == "add" or user_input == "+"
      return num1 + num2
   elsif user_input == "subtract" or user_input == "-"
