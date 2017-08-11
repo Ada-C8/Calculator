@@ -38,7 +38,7 @@ until counter > 0
   nums = gets.chomp.split
 
     # regex is checking each index within the nums array for characters from the alphabet.
-    if /[azAZ]/.match(nums[0]) || /[azAZ]/.match(nums[1])
+    if /[a-zA-Z]/.match(nums[0]) || /[a-zA-Z]/.match(nums[1])
       puts "Sorry I only work with numbers"
     else
       # if regex doesnt match anything from the two indeces, the variables are created and the conditionals and nested conditionals execute.
