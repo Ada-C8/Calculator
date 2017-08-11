@@ -13,18 +13,34 @@ until op_arr.include? op
   op = gets.chomp
 end
 
-puts "Enter two numbers: "
-numbers = []
-# check if input numbers are valid
-2.times do |i|
-  begin
-    numbers[i] = gets.chomp
-    numbers[i] = Float(numbers[i])
-  rescue
-    puts "Please enter a valid number:"
-    retry
-  end
+def number_check(n)
+  n.to_s =~ /[0-9]+/
 end
+puts "Enter two numbers: "
+num1 = gets.chomp
+num2 = gets.chomp
+
+while number_check(num1) == nil || number_check(num2) == nil
+   puts "Please enter a valid number: "
+  num1 = gets.chomp
+  num2 = gets.chomp
+end
+num1 = num1.to_f
+num2 = num2.to_f
+
+# non-method way of checking for number
+# puts "Enter two numbers: "
+# numbers = []
+# # check if input numbers are valid
+# 2.times do |i|
+#   begin
+#     numbers[i] = gets.chomp
+#     numbers[i] = Float(numbers[i])
+#   rescue
+#     puts "Please enter a valid number:"
+#     retry
+#   end
+# end
 
 # regex way
 # def is_numeric?(obj)
@@ -57,19 +73,19 @@ def math(op, num1, num2)
 end
 
 
-math = math(op, numbers[0], numbers[1])
+math = math(op, num1, num2)
 puts "Answer: #{math}"
 
 if op == "add" || op == "+"
-  puts "#{numbers[0]} + #{numbers[1]} = #{math}"
+  puts "#{num1} + #{num2} = #{math}"
 elsif op == "subtract" || op == "-"
-  puts "#{numbers[0]} - #{numbers[1]} = #{math}"
+  puts "#{num1} - #{num2} = #{math}"
 elsif op == "divide" || op == "/"
-  puts "#{numbers[0]} / #{numbers[1]} = #{math}"
+  puts "#{num1} / #{num2} = #{math}"
 elsif op == "multiply" || op == "*"
-  puts "#{numbers[0]} * #{numbers[1]} = #{math}"
+  puts "#{num1} * #{num2} = #{math}"
 elsif op == "exponent" || op == "^"
-  puts "#{numbers[0]} ^ #{numbers[1]} = #{math}"
+  puts "#{num1} ^ #{num2} = #{math}"
 else op == "modulo" || op == "%"
-  puts "#{numbers[0]} % #{numbers[1]} = #{math}"
+  puts "#{num1} % #{num2} = #{math}"
 end
