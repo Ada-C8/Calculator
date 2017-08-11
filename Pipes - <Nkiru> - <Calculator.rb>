@@ -2,8 +2,8 @@
 # Last edited 8/11/17
 # Create a calculator
 
-##Issues:  user entry set to interger or in Method
-##checking if num is an interger
+##Issues:  user entry set to interger or in Method - fixed
+# consolidate methods
 
 # Methods for computing math operations
 def add(num_1, num_2)
