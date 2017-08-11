@@ -125,14 +125,14 @@ end
 puts "Welcome to super-awesome-calculator"
 
 puts "\nWhat operation do you want to perform?"
+puts "Here are the possible operations: "
 ope = gets.chomp.to_s.downcase
 
 until supported_ope.include? ope
-  puts "\nThis operation is not supported. Choose a different operation:"
+  puts "\nThis operation is not supported. Choose a different operation: add,
+  subtract, multiply, divide, modulo, power of."
   ope = gets.chomp.to_s.downcase
 end
-
-
 
 ask_number_input("hotdog")
 ask_number_input("elephant")
