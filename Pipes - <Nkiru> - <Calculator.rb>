@@ -1,0 +1,103 @@
+# Nkiru Onwuneme
+# Last edited 8/11/17
+# Create a calculator
+
+##Issues:  user entry set to interger or in Method - fixed
+# consolidate methods
+
+# Methods for computing math operations
+def add(num_1, num_2)
+  result = num_1 + num_2
+  return result
+end
+
+def subtract(num_1, num_2)
+  result = num_1 - num_2
+  return result
+end
+
+def multiply(num_1, num_2)
+  result = num_1 * num_2
+  return result
+end
+
+# method to check if denominator is o
+def divide(num_1, num_2)
+  if num_2 == 0
+    puts "Invalid number, numerator indivisible by 0"
+  else
+    result = num_1.to_f/num_2.to_f
+  end
+  return result.round(6)
+end
+
+def exponent(num_1, num_2)
+  result = num_1 ** num_2
+  return result
+end
+
+def modulo(num_1, num_2)
+    result = num_1 % num_2
+    return result
+end
+
+def num_check(num)
+  begin
+   num = gets.chomp
+   if num.include?(".")
+    return num = Float(num)
+    else
+  return num = Integer(num)
+   end
+  rescue
+    print "Please enter an integer number:"
+    retry
+  end
+end
+
+# Greeting, welcome message/instructions
+puts "What your name?"
+name = gets.chomp
+puts "Hello #{name}!! I am C3P0 your human calculator................\n
+These are the operations that I can perform: add(+), subtract(-), multiply(*),
+divide(/), exponent(^) and modulo(%)......\n
+To exit the calculator enter \'quit'\ for operation...\n
+Let's get started: enter two numbers\n\n"
+
+puts "First number"
+num_1 = num_check(num_1)
+puts "Second number"
+num_2 = num_check(num_2)
+
+puts "Enter operation you want to perform...."
+prompt = "> "
+while operation = gets.chomp
+  case operation
+  when "add" , "+"
+    puts add(num_1, num_2)
+    break
+  when "subtract" , "-"
+    puts subtract(num_1, num_2)
+    break
+  when "divide" , "/"
+    puts divide(num_1, num_2)
+    break
+  when "multiply" , "*"
+    puts multiply(num_1, num_2)
+    break
+  when "exponent" , "^"
+    puts exponent(num_1, num_2)
+    break
+  when "modulo" , "%"
+    puts modulo(num_1, num_2)
+    break
+  when "quit"
+    break
+  else
+    puts "Invalid operation, please select again"
+    print prompt
+  end
+end
+
+# output calculation
+
