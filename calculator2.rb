@@ -1,3 +1,4 @@
+# Method checks if user input is a whole number.
 def number_check(num)
 until num.is_a?(Integer) do
 		puts "Please input a whole number."
@@ -6,6 +7,7 @@ end
   return num
 end
 
+#Method checks if operator is valid.
 def operator_check(sign)
   until sign == "+" or sign == "add" or sign == "-" or
     sign == "subtract" or sign == "*" or sign == "multiply" or
@@ -18,6 +20,7 @@ def operator_check(sign)
     return sign
 end
 
+#Method compares input to operations and outputs the equations.
 def do_math (sign, num1, num2)
   if sign == "+" or sign == "add"
     answer = num1 + num2
@@ -46,7 +49,7 @@ def do_math (sign, num1, num2)
   end
 end
 
-
+#App contains welcome message and user prompts.
 puts "Welcome to the Calculator!"
 puts
 
