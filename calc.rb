@@ -14,14 +14,7 @@ def divide (n1, n2)
   return n1/n2
 end
 
-# def is_flt
-# Float(gets.chomp) rescue nil
-# puts
-# end
-
 puts "Welcome to the calculator!"
-
-
 
 puts "Please enter your first number"
 begin
@@ -63,7 +56,7 @@ elsif operator == "*" || operator == "multiply" || operator == "Multiply"
 else #operator == "/" || operator == "divide" || operator == "Divide"
   if n2 == 0
     puts "Dividing by zero is undefined"
-    break
+    return
   else
     result = divide(n1, n2)
     operator = "/"
