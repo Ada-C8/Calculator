@@ -16,6 +16,18 @@ end
 def number_check(n)
   n.to_s =~ /[0-9]+/
 end
+
+#  array attempt to store
+# number_arr = []
+# 2.times do |n|
+#   puts "Enter two numbers: "
+#   number_arr << gets.chomp
+#   while number_check[n] == nil
+#     puts "Please enter a valid number: "
+#     number_arr << gets.chomp
+#   end
+# end
+
 puts "Enter two numbers: "
 num1 = gets.chomp
 num2 = gets.chomp
@@ -50,27 +62,28 @@ num2 = num2.to_f
 
 # defining a method and executing the maths
 def math(op, num1, num2)
-  if op == "add" || op == "+"
+  case op
+  when "add", "+"
     answer = num1 + num2
     puts "#{num1} + #{num2} = #{answer}"
     return num1 + num2
-  elsif op == "subtract" || op == "-"
+  when "subtract", "-"
     answer = num1 - num2
     puts "#{num1} - #{num2} = #{answer}"
     return num1 - num2
-  elsif op == "multiply" || op == "*"
+  when "multiply", "*"
     answer = num1 * num2
     puts "#{num1} * #{num2} = #{answer}"
     return num1 * num2
-  elsif op == "modulo" || op == "%"
+  when "modulo", "%"
     answer = num1 % num2
     puts "#{num1} % #{num2} = #{answer}"
     return num1 % num2
-  elsif op == "exponent" || op == "^"
+  when "exponent", "^"
     answer = num1 ** num2
     puts "#{num1} ^ #{num2} = #{answer}"
     return num1 ** num2
-  elsif op == "divide" || op == "/"
+  when "divide", "/"
     # how to handle if trying to divide by zero
     if num2 == 0
       puts "Your answer is undefined"
