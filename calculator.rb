@@ -22,14 +22,14 @@ def calculate (user_input, num1, num2)
   puts "Please enter second number: "
   num2 = Float(gets.chomp.to_i)
   if user_input == "add" or user_input == "+"
-     return num1 + num2
+     return puts " #{num1} + #{num2} = #{num1 + num2} "
   elsif user_input == "subtract" or user_input == "-"
-     return num1 - num2
+     return puts " #{num1} - #{num2} = #{num1 - num2} "
   elsif user_input == "multiply" or user_input == "*"
-     return num1 * num2
+     return puts " #{num1} * #{num2} = #{num1 * num2} "
   elsif user_input == "divide" or user_input == "/"
      if num2 != 0
-       return num1 / num2
+       return puts " #{num1} / #{num2} = #{num1 / num2} "
      else puts "please enter number other than 0 "
      end
   else
