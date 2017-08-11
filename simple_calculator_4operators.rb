@@ -25,9 +25,9 @@ def introduction
 
 end
 
-#get_user_input method (to obtain first number, second number, & operator user input)
+#get_input_and_calculate method (to obtain first number, second number, & operator user input)
 
-def get_user_input
+def get_input_and_calculate
   operators = ["add", "+", "subtract", "-", "multiply", "*", "divide", "/"]
 
   #GET FIRST NUMBER FROM USER
@@ -106,7 +106,7 @@ end
 def divide(num1, num2)
   if num2.to_f == 0
     puts "You cannot divide by zero! Please re-enter your math expression from the top."
-    get_user_input
+    get_input_and_calculate
     return #so it breaks out of the first instance of divide with had num2 = 0
   end
   result = num1.to_f / num2.to_f
@@ -117,4 +117,4 @@ end
 # Introduce the calculator app.
 introduction
 # Ask the user for their calculator input & calculate
-get_user_input
+get_input_and_calculate
