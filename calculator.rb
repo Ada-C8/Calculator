@@ -29,7 +29,7 @@ def calculate (user_input, num1, num2)
      return puts " #{num1} * #{num2} = #{num1 * num2} "
   elsif user_input == "divide" or user_input == "/"
      while num2 == 0
-       puts "please enter number other than 0 "
+       puts "Please enter number other than 0 "
        num2 = Float(gets.chomp)
      return puts "#{num1} / #{num2} = #{num1 / num2} "
      end
