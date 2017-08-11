@@ -1,0 +1,87 @@
+def add(a, b)
+  print "#{a} + #{b} = "
+  return a + b
+end
+
+def subtract(a, b)
+  print "#{a} - #{b} = "
+  return a - b
+end
+
+def multiply(a, b)
+  print "#{a} * #{b} = "
+  return a * b
+end
+
+def divide(a, b)
+  if b == 0
+    puts "Trying to divide #{a} by #{b}, but you cannot divide by zero."
+  else
+    print "#{a} / #{b} is "
+    return a / b
+  end
+end
+
+def expo(a, b)
+  print "#{a} to the power of #{b} is "
+  return a ** b
+end
+
+def mod(a, b)
+  print "#{a} divided by #{b} leaves a remainder of "
+  return a % b
+end
+
+def check(number)
+  until (number !~ /[A-Za-z]/) && (number != "")
+    puts "Please try again: "
+    number = gets.chomp
+  end
+  if number.include?(".")
+    return number.to_f
+  else
+    return number.to_i
+  end
+end
+
+puts "Please enter a number: "
+number = gets.chomp
+
+a = check(number)
+
+puts "Please enter a second number: "
+number = gets.chomp
+
+b = check(number)
+puts "\n" + "-" * 50
+puts "What would you like to do with your numbers: \n\n"
+
+puts "To Add: \tType \"Add\" or a Plus (+) Sign."
+puts "To Subtract: \tType \"Subtract\" or a Minus (-) Sign."
+puts "To Multiply: \tType \"Multiply\" or an Asterisk (*)."
+puts "To Divide: \tType \"Divide\" or a Slash (/)"
+puts "For Exponents: \tType \"Expo\" or a Caret (^)"
+puts "For Remainder: \tType \"Mod\" or a Percent (%) Sign."
+puts "-" * 50 + "\n"
+
+answer = gets.chomp.capitalize
+answers = ["Add", "Subtract", "Multiply", "Divide", "Expo", "Mod", "+", "-", "*", "/", "^", "%"]
+
+until answers.include?(answer)
+  puts "That wasn't an option. Please choose again: "
+  answer = gets.chomp.capitalize
+end
+
+if answer == "Add" || answer == "+"
+  puts add(a, b)
+elsif answer == "Subtract" || answer == "-"
+  puts subtract(a, b)
+elsif answer == "Multiply" || answer == "*"
+  puts multiply(a, b)
+elsif answer == "Divide" || answer == "/"
+  puts divide(a, b)
+elsif answer == "Expo" || answer == "^"
+  puts expo(a, b)
+elsif answer == "Mod" || answer == "%"
+  puts mod(a, b)
+end
