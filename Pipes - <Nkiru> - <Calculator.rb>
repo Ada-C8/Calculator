@@ -1,0 +1,108 @@
+# Last edited 8/10/17
+# Create a calculator
+
+##Issues:  user entry set to interger or in Method
+##checking if num is an interger
+
+# Methods for computing math operations
+def add(num_1, num_2)
+  result = num_1.to_i + num_2.to_i
+  return result
+end
+
+def subtract(num_1, num_2)
+  result = num_1.to_i - num_2.to_i
+  return result
+end
+
+def multiply(num_1, num_2)
+  result = num_1 & num_2
+  return result
+end
+
+def divide(num_1, num_2)
+  result = num_1.to_f/num_2.to_f
+  if num_2 == 0
+    puts "Invalid number, re-enter number >0"
+    num_2 = gets.chomp
+  end
+  return result.round(6)
+end
+
+def exponent(num_1, num_2)
+  result num_1 ** num_2
+  return result
+end
+
+# method checks if denominator is 0
+def modulo(num_1, num_2)
+    result num_1 % num_2
+    return result
+end
+
+# Check if number is an interger
+#def num_check_1(num)
+#  while (num != '0') && (num.to_i.to_s != num.strip)
+#  puts " input is not a number. please try again"
+#  num_1 = gets.chomp
+#  end
+# end
+
+# def num_check_2(num)
+#   begin
+#     num = Integer(num)
+#     rescue
+#     print "Please enter an integer number:"
+#     retry
+# return num
+#   end
+# end
+
+# Greeting, welcome message/instructions
+puts "What your name?"
+name = gets.chomp
+
+puts "Hello #{name}!! I am C3P0 your human calculator................\n
+These are the operations that I can perform: add(+), subtract(-), multiply(*),
+divide(/), exponent(^) and modulo(%)......\n
+To exit the calculator enter \'quit'\ for operation...\n
+Let's get started: enter two numbers\n\n"
+
+puts "First number"
+num_1 = gets.chomp.to_i
+# check_input(num_1)
+puts "Second number"
+num_2 = gets.chomp.to_i
+# num_check_2(num_2)
+
+puts "Enter operation you want to perform...."
+prompt = "> "
+while operation = gets.chomp
+  case operation
+  when "add" , "+"
+    puts add(num_1, num_2)
+    break
+  when "subtract" , "-"
+    puts subtract(num_1, num_2)
+    break
+  when "divide" , "/"
+    puts divide(num_1, num_2)
+    break
+  when "multiply" , "*"
+    puts multiply(num_1, num_2)
+    break
+  when "exponent" , "^"
+    puts exponent(num_1, num_2)
+    break
+  when "modulo" , "%"
+    puts modulo(num_1, num_2)
+    break
+  when "quit"
+    break
+  else
+    puts "Invalid operation, please select again"
+    print prompt
+  end
+end
+
+# output calculation
