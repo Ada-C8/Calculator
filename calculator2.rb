@@ -86,9 +86,9 @@ end
 puts "Enter your mathematical expression using no spaces: "
 computation = gets.chomp
 
-#Prompts user to enter math expression if they only pressed enter
-while computation == ""
-  puts "Enter your mathematical expression using no spaces: "
+#Prompts user to enter a valid math expression if they don't include an operator.
+while math_hash.to_a.flatten & computation.split("") == []
+  puts "Please enter a VALID mathematical expression"
   computation = gets.chomp
 end
 
