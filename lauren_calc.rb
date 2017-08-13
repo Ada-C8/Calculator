@@ -1,9 +1,41 @@
-# regex attempt
-#   obj = obj.to_s unless obj.is_a? String
-#   /\A[+-]?\d+(\.[\d]+)?\z/.match obj
-# end
+# number? check
+def num_check(num)
+  begin
+    num = gets.chomp
+    if num.include?(".")
+      return num = Float(num)
+    else
+      return num = Integer(num)
+    end
+  rescue
+    puts "Please enter a valid number: "
+    retry
+  end
+end
 
-# receiving input from user
+
+# defining a method and executing the maths
+def add(num1, num2)
+  return num1 + num2
+end
+def subtract(num1, num2)
+  return num1 - num2
+end
+def multiply(num1, num2)
+  return num1 * num2
+end
+def division(num1, num2)
+  if num2 != 0
+    return num1 / num2
+  elsif b == 0
+    puts "Not a number!"
+  end
+end
+def modulo(num1, num2)
+    return num1 % num2
+end
+
+# receiving operation input from user
 puts "Welcome! What operation would you like to do? (+ - / * % ^)"
 op = gets.chomp
 # handling when the user inputs anything other than an appropriate operation
@@ -13,89 +45,39 @@ until op_arr.include? op
   op = gets.chomp
 end
 
-def number_check(n)
-  n.to_s =~ /[0-9]+/
-end
-
-#  array attempt to store
-# number_arr = []
-# 2.times do |n|
-#   puts "Enter two numbers: "
-#   number_arr << gets.chomp
-#   while number_check[n] == nil
-#     puts "Please enter a valid number: "
-#     number_arr << gets.chomp
-#   end
-# end
-
-puts "Enter two numbers: "
-num1 = gets.chomp
-num2 = gets.chomp
-
-while number_check(num1) == nil || number_check(num2) == nil
-  puts "Please enter a valid number: "
-  num1 = gets.chomp
-  num2 = gets.chomp
-end
-num1 = num1.to_f
-num2 = num2.to_f
-
-# non-method way of checking for number
 # puts "Enter two numbers: "
-# numbers = []
-# # check if input numbers are valid
-# 2.times do |i|
-#   begin
-#     numbers[i] = gets.chomp
-#     numbers[i] = Float(numbers[i])
-#   rescue
-#     puts "Please enter a valid number:"
-#     retry
-#   end
-# end
+puts "What two numbers would you like to apply to that operation?"
+puts "Number 1: "
+num1 = num_check(num1)
+puts "Number 2: "
+num2 = num_check(num2)
 
-# regex way
-# def is_numeric?(obj)
-#    obj.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true
-# end
-
-
-# defining a method and executing the maths
-def math(op, num1, num2)
-  case op
-  when "add", "+"
-    answer = num1 + num2
-    puts "#{num1} + #{num2} = #{answer}"
-    return num1 + num2
-  when "subtract", "-"
-    answer = num1 - num2
-    puts "#{num1} - #{num2} = #{answer}"
-    return num1 - num2
-  when "multiply", "*"
-    answer = num1 * num2
-    puts "#{num1} * #{num2} = #{answer}"
-    return num1 * num2
-  when "modulo", "%"
-    answer = num1 % num2
-    puts "#{num1} % #{num2} = #{answer}"
-    return num1 % num2
-  when "exponent", "^"
-    answer = num1 ** num2
-    puts "#{num1} ^ #{num2} = #{answer}"
-    return num1 ** num2
-  when "divide", "/"
-    # how to handle if trying to divide by zero
-    if num2 == 0
-      puts "Your answer is undefined"
-      return
-    end
-    answer = num1 / num2
-    puts "#{num1} / #{num2} = #{answer}"
-    return num1 / num2
-  else
-    puts "Please enter an available operation"
-  end
+# def math(op, num1, num2)
+case op
+when "add", "+"
+  answer = add(num1, num2)
+  puts "#{num1} + #{num2} = #{answer}"
+  # return num1 + num2
+when "subtract", "-"
+  answer = subtract(num1, num2)
+  puts "#{num1} - #{num2} = #{answer}"
+  # return num1 - num2
+when "multiply", "*"
+  answer = multiply(num1, num2)
+  puts "#{num1} * #{num2} = #{answer}"
+  # return num1 * num2
+when "modulo", "%"
+  answer = modulo(num1, num2)
+  puts "#{num1} % #{num2} = #{answer}"
+  # return num1 % num2
+when "exponent", "^"
+  answer = modulo(num1, num2)
+  puts "#{num1} ^ #{num2} = #{answer}"
+  return num1 ** num2
+when "divide", "/"
+  answer = division(num1, num2)
+  puts "#{num1} / #{num2} = #{answer}"
+  # return num1 / num2
+else
+  puts "Please enter an available operation"
 end
-
-math = math(op, num1, num2)
-puts "Answer: #{math}"
